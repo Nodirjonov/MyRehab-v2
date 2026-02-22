@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap');
+
+/* ── Design tokens ── */
+:root {
+  /* Light */
+  --bg:          #F0F4FA;
+  --bg-2:        #E8EDF6;
+  --bg-card:     #FFFFFF;
+  --bg-card-2:   #F7F9FC;
+  --border:      rgba(0,0,0,0.07);
+  --border-em:   rgba(0,0,0,0.13);
+  --text:        #0D1117;
+  --text-2:      #3D4A5C;
+  --text-muted:  #7A8899;
+  --blue:        #1A5FD4;
+  --blue-light:  #2E7FFF;
+  --blue-bg:     rgba(26,95,212,0.08);
+  --green:       #0A9B6A;
+  --green-bg:    rgba(10,155,106,0.09);
+  --amber:       #D97706;
+  --amber-bg:    rgba(217,119,6,0.09);
+  --purple:      #7C3AED;
+  --purple-bg:   rgba(124,58,237,0.09);
+  --pink:        #DB2777;
+  --pink-bg:     rgba(219,39,119,0.09);
+
+  /* Bubble colors light */
+  --bubble-1: rgba(26,95,212,0.18);
+  --bubble-2: rgba(26,95,212,0.10);
+  --bubble-3: rgba(46,127,255,0.14);
+}
+
+.dark {
+  --bg:          #080E1A;
+  --bg-2:        #0D1628;
+  --bg-card:     #101C30;
+  --bg-card-2:   #0A1420;
+  --border:      rgba(255,255,255,0.07);
+  --border-em:   rgba(255,255,255,0.14);
+  --text:        #F1F5FB;
+  --text-2:      #8FA8C8;
+  --text-muted:  #4A6080;
+  --blue:        #3B8EFF;
+  --blue-light:  #5BA4FF;
+  --blue-bg:     rgba(59,142,255,0.10);
+  --green:       #10B981;
+  --green-bg:    rgba(16,185,129,0.10);
+  --amber:       #F59E0B;
+  --amber-bg:    rgba(245,158,11,0.10);
+  --purple:      #A78BFA;
+  --purple-bg:   rgba(167,139,250,0.10);
+  --pink:        #F472B6;
+  --pink-bg:     rgba(244,114,182,0.10);
+
+  --bubble-1: rgba(59,142,255,0.20);
+  --bubble-2: rgba(59,142,255,0.10);
+  --bubble-3: rgba(91,164,255,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Geist', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+.font-serif { font-family: 'Instrument Serif', Georgia, serif !important; }
+
+/* ── Grid dots bg ── */
+.grid-dots {
+  background-image: radial-gradient(circle, var(--border-em) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Animated bubbles ── */
+@keyframes bubbleFloat1 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(40px, -60px) scale(1.08); }
+  66%  { transform: translate(-30px, 30px) scale(0.94); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes bubbleFloat2 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(-50px, 40px) scale(1.05); }
+  66%  { transform: translate(35px, -45px) scale(0.92); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes bubbleFloat3 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, 50px) scale(0.96); }
+  66%  { transform: translate(-40px, -30px) scale(1.06); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes bubbleWave {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  pointer-events: none;
+}
+.bubble-a { background: var(--bubble-1); animation: bubbleFloat1 12s ease-in-out infinite; }
+.bubble-b { background: var(--bubble-2); animation: bubbleFloat2 16s ease-in-out infinite; }
+.bubble-c { background: var(--bubble-3); animation: bubbleFloat3 10s ease-in-out infinite; }
+.bubble-wave { animation: bubbleWave 6s ease-in-out infinite; }
+.bubble-wave-2 { animation: bubbleWave 8s ease-in-out 2s infinite; }
+.bubble-wave-3 { animation: bubbleWave 7s ease-in-out 4s infinite; }
+
+/* ── Fade up animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-1 { animation: fadeUp 0.8s 0.00s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-2 { animation: fadeUp 0.8s 0.10s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-3 { animation: fadeUp 0.8s 0.20s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-4 { animation: fadeUp 0.8s 0.34s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-5 { animation: fadeUp 0.8s 0.50s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── Blink ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.blink { animation: blink 2.2s ease-in-out infinite; }
+
+/* ── Flow line for pipeline ── */
+@keyframes flowDown {
+  0%   { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+.flow-line {
+  stroke-dasharray: 6 6;
+  animation: flowDown 1.2s linear infinite;
+}
+
+/* ── Marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 30s linear infinite; }
+
+/* ── Theme transition ── */
+* { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease; }
+a, button { transition: all 0.15s ease !important; }
