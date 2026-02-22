@@ -37,7 +37,12 @@ export default function Problem() {
   const competitors = [
     { name: 'Physitrack', key: 'comp_physitrack', highlight: false },
     { name: 'MedBridge', key: 'comp_medbridge', highlight: false },
-    { name: lang => lang === 'en' ? 'Paper prescriptions' : lang === 'uz' ? 'Qog\'oz retseptlar' : 'Бумажные рецепты', key: 'comp_paper', highlight: false },
+    { name: (lang: 'en' | 'ru' | 'uz') =>
+  lang === 'en'
+    ? 'Paper prescriptions'
+    : lang === 'uz'
+    ? "Qog'oz retseptlar"
+    : 'Бумажные рецепты',},
     { name: 'MyRehab ✓', key: 'comp_myrehab', highlight: true },
   ];
 
