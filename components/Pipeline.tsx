@@ -40,6 +40,26 @@ export default function Pipeline() {
       labelKey: 'pipe_step7_label', descKey: 'pipe_step7_desc', badge: null,
       icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>,
     },
+    {
+      n: '08', color: 'red', bg: 'var(--pink-bg)',
+      labelKey: 'pipe_step8_label', descKey: 'pipe_step8_desc', badge: null,
+      icon:  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" strokeWidth="1.8"
+       strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 12h4l3-6 4 12 3-6h4"/>
+  </svg>,
+    },
+    {
+      n: '09', color: 'var(--blue)', bg: 'var(--blue-bg)',
+      labelKey: 'pipe_step9_label', descKey: 'pipe_step9_desc', badge: null,
+      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" strokeWidth="1.8"
+       strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <path d="M14 2v6h6"/>
+    <path d="M8 13h8M8 17h8"/>
+  </svg>,
+    },
   ];
 
   return (
@@ -91,7 +111,8 @@ export default function Pipeline() {
             </div>
             <div>
               <div className="text-[13px] font-bold text-[var(--green)] mb-1">{t('pipe_cds_title')}</div>
-              <p className="text-[13px] text-[var(--text-2)] leading-relaxed m-0">{t('pipe_cds_desc')}</p>
+              <p className="text-[14px] text-[var(--text-2)] leading-relaxed m-0">{t('pipe_cds_desc1')}</p>
+              <span className="text-[12px] text-[#939292] leading-relaxed m-0">{t('pipe_cds_desc2')}</span>
             </div>
           </div>
         </div>

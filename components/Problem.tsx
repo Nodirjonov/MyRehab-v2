@@ -51,13 +51,14 @@ export default function Problem() {
       <div className="max-w-6xl mx-auto">
 
         <div className="reveal mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-5 border border-[var(--amber-bg)] bg-[var(--amber-bg)] text-[var(--amber)] text-[11px] font-bold tracking-widest uppercase rounded-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-5  border border-[var(--amber-bg)] bg-[var(--amber-bg)] text-[var(--amber)] text-[11px] font-bold tracking-widest uppercase rounded-sm">
             {t('prob_label')}
           </div>
-          <h2 className="font-serif text-[var(--text)] font-normal leading-[1.1]" style={{ fontSize: 'clamp(28px, 4.5vw, 56px)' }}>
+          <h2 className="font-serif text-[var(--text)] font-normal leading-[1.1] mb-5" style={{ fontSize: 'clamp(28px, 4.5vw, 56px)' }}>
             {t('prob_h2_1')}<br />
-            <span className="text-[var(--amber)]">{t('prob_h2_2')}</span>
+           
           </h2>
+           <span className="text-[#a2a1a1] text-[20px] ">{t('prob_h2_2')}</span>
         </div>
 
         <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">

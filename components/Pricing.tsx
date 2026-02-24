@@ -7,13 +7,13 @@ export default function Pricing() {
   const plans = [
     {
       nameKey: 'plan1_name', priceKey: 'plan1_price', perKey: 'plan1_per', descKey: 'plan1_desc',
-      features: ['plan1_f1','plan1_f2','plan1_f3','plan1_f4','plan1_f5'],
+      features: ['plan1_f1','plan1_f2','plan1_f3','plan1_f4','plan1_f5','plan1_f6'],
       featured: false, ctaKey: 'plan1_cta', clinicKey: 'plan1_clinic',
       radius: '4px 20px 20px 20px', popularKey: null,
     },
     {
       nameKey: 'plan2_name', priceKey: 'plan2_price', perKey: 'plan2_per', descKey: 'plan2_desc',
-      features: ['plan2_f1','plan2_f2','plan2_f3','plan2_f4','plan2_f5'],
+      features: ['plan2_f1','plan2_f2','plan2_f3','plan2_f4','plan2_f5','plan2_f6'],
       featured: true, ctaKey: 'plan2_cta', clinicKey: 'plan2_clinic',
       radius: '20px', popularKey: 'plan2_popular',
     },
@@ -33,9 +33,8 @@ export default function Pricing() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-5 border border-[var(--blue-bg)] bg-[var(--blue-bg)] text-[var(--blue)] text-[11px] font-bold tracking-widest uppercase rounded-sm">
             {t('price_label')}
           </div>
-          <h2 className="font-serif text-[var(--text)] font-normal leading-[1.1] mb-4" style={{ fontSize: 'clamp(28px, 4.5vw, 56px)' }}>
+          <h2 className="font-serif text-[var(--blue)] font-normal leading-[1.1] mb-4" style={{ fontSize: 'clamp(28px, 4.5vw, 56px)' }}>
             {t('price_h2_1')}<br />
-            <span className="text-[var(--blue)]">{t('price_h2_2')}</span>
           </h2>
           <p className="text-[var(--text-2)] text-[15px] max-w-lg mx-auto leading-relaxed">{t('price_sub')}</p>
         </div>
@@ -64,7 +63,7 @@ export default function Pricing() {
                 <span className={`text-[15px] ml-1 ${featured ? 'text-white/60' : 'text-[var(--text-muted)]'}`}>{t(perKey)}</span>
               </div>
 
-              <p className={`text-[13px] leading-relaxed mb-6 ${featured ? 'text-white/70' : 'text-[var(--text-2)]'}`}>{t(descKey)}</p>
+              <p className={`text-[13px] mt-[15px] leading-relaxed mb-6 ${featured ? 'text-white/70' : 'text-[var(--text-2)]'}`}>{t(descKey)}</p>
 
               <div className={`h-px mb-5 ${featured ? 'bg-white/20' : 'bg-[var(--border-em)]'}`} />
 

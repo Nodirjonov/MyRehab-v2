@@ -65,7 +65,7 @@ export default function Hero() {
               </div>
             </div>
             <ul className="space-y-2">
-              {(['hero_doc_f1','hero_doc_f2','hero_doc_f3','hero_doc_f4'] as const).map((key) => (
+              {(['hero_doc_f1','hero_doc_f2','hero_doc_f3','hero_doc_f4','hero_doc_f5'] as const).map((key) => (
                 <li key={key} className="flex items-center gap-2 text-[12.5px] text-[var(--text-2)]">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                   {t(key)}
@@ -91,7 +91,7 @@ export default function Hero() {
               </div>
             </div>
             <ul className="space-y-2">
-              {(['hero_pat_f1','hero_pat_f2','hero_pat_f3','hero_pat_f4'] as const).map((key) => (
+              {(['hero_pat_f1','hero_pat_f2','hero_pat_f3','hero_pat_f4','hero_pat_f5'] as const).map((key) => (
                 <li key={key} className="flex items-center gap-2 text-[12.5px] text-[var(--text-2)]">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                   {t(key)}
@@ -118,13 +118,13 @@ export default function Hero() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 border border-[var(--border-em)] bg-[var(--bg-card)] overflow-hidden"
           style={{ borderRadius: '16px 4px 16px 4px' }}>
           {[
-            { n: '916', key: 'hero_stat_1' },
-            { n: '14',  key: 'hero_stat_2' },
-            { n: '499', key: 'hero_stat_3' },
-            { n: '6',   key: 'hero_stat_4' },
+            { n: '900+ structured clinical protocols', key: 'hero_stat_1' },
+            { n: '14 Medical Specialties',  key: 'hero_stat_2' },
+            { n: 'Multi-language support', key: 'hero_stat_3' },
+            { n: 'Doctor-controlled workflow',   key: 'hero_stat_4' },
           ].map(({ n, key }, i) => (
             <div key={i} className={`py-6 text-center ${i < 3 ? 'border-r border-[var(--border)]' : ''} ${i >= 2 ? 'border-t border-[var(--border)] md:border-t-0' : ''}`}>
-              <div className="font-serif text-[38px] md:text-[44px] text-[var(--text)] leading-none">{n}</div>
+              <div className="font-serif text-[25px] md:text-[30px] text-[var(--text)] leading-none">{n}</div>
               <div className="text-[11px] text-[var(--text-muted)] mt-1.5">{t(key)}</div>
             </div>
           ))}
