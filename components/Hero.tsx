@@ -118,13 +118,13 @@ export default function Hero() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 border border-[var(--border-em)] bg-[var(--bg-card)] overflow-hidden"
           style={{ borderRadius: '16px 4px 16px 4px' }}>
           {[
-            { n: '900+ structured clinical protocols', key: 'hero_stat_1' },
-            { n: '14 Medical Specialties',  key: 'hero_stat_2' },
-            { n: 'Multi-language support', key: 'hero_stat_3' },
-            { n: 'Doctor-controlled workflow',   key: 'hero_stat_4' },
+            { n: 'Evidence-Based Rehabilitation Across All Diseases', key: 'hero_stat_1' },
+            { n: 'Multispecialty Medical Coverage',  key: 'hero_stat_2' },
+            { n: 'Multilingual Clinical Intelligence', key: 'hero_stat_3' },
+            { n: 'Doctor-Governed Treatment Engine',   key: 'hero_stat_4' },
           ].map(({ n, key }, i) => (
             <div key={i} className={`py-6 text-center ${i < 3 ? 'border-r border-[var(--border)]' : ''} ${i >= 2 ? 'border-t border-[var(--border)] md:border-t-0' : ''}`}>
-              <div className="font-serif text-[25px] md:text-[30px] text-[var(--text)] leading-none">{n}</div>
+              <div className="font-serif text-[20px] md:text-[25px] text-[var(--text)] leading-none">{n}</div>
               <div className="text-[11px] text-[var(--text-muted)] mt-1.5">{t(key)}</div>
             </div>
           ))}
