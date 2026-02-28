@@ -40,12 +40,12 @@ export default function Hero() {
           style={{ fontSize: 'clamp(42px, 7.5vw, 90px)' }}>
           {t('hero_h1_1')}<br />
           <em className="not-italic text-[var(--blue)]">{t('hero_h1_2')}</em><br />
-          <span className="text-[var(--text-muted)]" style={{ fontSize: 'clamp(28px, 5vw, 58px)' }}>
+          <span className="text-[var(--text-muted)]" style={{ fontSize: 'clamp(20px, 4vw, 50px)' }}>
             {t('hero_h1_3')}
           </span>
         </h1>
 
-        <p className="anim-3 text-[var(--text-2)] text-[16px] md:text-[18px] leading-[1.7] max-w-[560px] mb-10">
+        <p className="anim-3 text-[var(--text-2)] text-[12px] md:text-[18px] leading-[1.7] max-w-[560px] mb-10">
           {t('hero_sub')}
         </p>
 
