@@ -18,6 +18,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
+  // Detect Telegram in-app browser and expose extra toolbar offset
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && /Telegram/i.test(navigator.userAgent)) {
+      document.documentElement.style.setProperty('--tg-toolbar', '36px');
+    }
+  }, []);
+
   const links = [
     { key: 'nav_link_how', href: '#pipeline' },
     { key: 'nav_link_spec', href: '#specialties' },
@@ -31,7 +38,7 @@ export default function Navbar() {
         ${scrolled
           ? 'bg-[var(--bg)]/90 backdrop-blur-xl border-b border-[var(--border)]'
           : 'bg-transparent'}`}
-        style={{ top: 'var(--safe-top, 0px)' }}>
+        style={{ top: 'calc(var(--safe-top, 0px) + var(--tg-toolbar, 0px))' }}>
 
         <a href="#" className="flex items-center gap-3 no-underline group">
           <div className="w-12 h-12 rounded-[10px]  flex items-center justify-center shadow-[0_2px_12px_rgba(26,95,212,0.35)] group-hover:scale-105 transition-transform overflow-hidden">
@@ -98,7 +105,7 @@ export default function Navbar() {
 
       {open && (
         <div className="fixed inset-x-0 z-40 bg-[var(--bg-card)] border-b border-[var(--border)] md:hidden shadow-xl"
-          style={{ top: 'calc(var(--safe-top, 0px) + 62px)' }}>
+          style={{ top: 'calc(var(--safe-top, 0px) + var(--tg-toolbar, 0px) + 62px)' }}>
           <div className="p-4 flex flex-col gap-1">
             {links.map(({ key, href }) => (
               <a key={href} href={href} onClick={() => setOpen(false)}
