@@ -1,5 +1,7 @@
 'use client';
 import { useLang } from '../lib/LangContext';
+import MyRehabLogo from "../image/myrehab.logo.png"
+import Image from 'next/image';
 
 export default function Footer() {
   const { t } = useLang();
@@ -10,8 +12,13 @@ export default function Footer() {
     <footer className="border-t border-[var(--border)] px-5 md:px-10 py-8 bg-[var(--bg-2)]">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-[var(--blue)] flex items-center justify-center">
-            <span className="font-serif text-white font-bold text-[12px]">M</span>
+          <div className="w-12 h-12 rounded-[10px]  flex items-center justify-center shadow-[0_2px_12px_rgba(26,95,212,0.35)] group-hover:scale-105 transition-transform overflow-hidden">
+           <Image
+          src={MyRehabLogo}
+          alt="MyRehab"
+          className="object-contain"
+          priority
+          />
           </div>
           <span className="font-serif text-[16px] text-[var(--text-2)]">MyRehab</span>
         </div>
