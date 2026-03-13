@@ -27,18 +27,14 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 inset-x-0 z-50 h-[62px] flex items-center px-5 md:px-10 transition-all duration-300
+      <nav className={`fixed inset-x-0 z-50 h-[62px] flex items-center px-5 md:px-10 transition-all duration-300
         ${scrolled
           ? 'bg-[var(--bg)]/90 backdrop-blur-xl border-b border-[var(--border)]'
-          : 'bg-transparent'}`}>
+          : 'bg-transparent'}`}
+        style={{ top: 'var(--safe-top, 0px)' }}>
 
         <a href="#" className="flex items-center gap-3 no-underline group">
           <div className="w-12 h-12 rounded-[10px]  flex items-center justify-center shadow-[0_2px_12px_rgba(26,95,212,0.35)] group-hover:scale-105 transition-transform overflow-hidden">
-            {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="white" strokeWidth="1.5"/>
-              <path d="M12 7v5l3 3" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
-              <circle cx="19" cy="5" r="3" fill="#10B981"/>
-            </svg> */}
            <Image
           src={MyRehabLogo}
           alt="MyRehab"
@@ -101,7 +97,8 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="fixed top-[62px] inset-x-0 z-40 bg-[var(--bg-card)] border-b border-[var(--border)] md:hidden shadow-xl">
+        <div className="fixed inset-x-0 z-40 bg-[var(--bg-card)] border-b border-[var(--border)] md:hidden shadow-xl"
+          style={{ top: 'calc(var(--safe-top, 0px) + 62px)' }}>
           <div className="p-4 flex flex-col gap-1">
             {links.map(({ key, href }) => (
               <a key={href} href={href} onClick={() => setOpen(false)}

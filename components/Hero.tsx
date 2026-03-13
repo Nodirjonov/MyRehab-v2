@@ -17,7 +17,8 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen grid-dots flex flex-col justify-center overflow-hidden pt-16">
+    <section className="relative min-h-[100svh] grid-dots flex flex-col justify-center overflow-hidden"
+      style={{ paddingTop: 'calc(var(--safe-top, 0px) + 64px)' }}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {bubbles.map((b, i) => (
           <div key={i} className={`bubble ${b.cls}`}
