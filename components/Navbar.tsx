@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useLang } from '../lib/LangContext';
 import { Lang } from '../lib/i18n';
+import MyRehabLogo from "../image/myrehab.logo.png"
+import Image from 'next/image';
 
 export default function Navbar() {
   const { theme, toggle } = useTheme();
@@ -31,12 +33,18 @@ export default function Navbar() {
           : 'bg-transparent'}`}>
 
         <a href="#" className="flex items-center gap-3 no-underline group">
-          <div className="w-9 h-9 rounded-[10px] bg-[var(--blue)] flex items-center justify-center shadow-[0_2px_12px_rgba(26,95,212,0.35)] group-hover:scale-105 transition-transform">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <div className="w-12 h-12 rounded-[10px]  flex items-center justify-center shadow-[0_2px_12px_rgba(26,95,212,0.35)] group-hover:scale-105 transition-transform overflow-hidden">
+            {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="white" strokeWidth="1.5"/>
               <path d="M12 7v5l3 3" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
               <circle cx="19" cy="5" r="3" fill="#10B981"/>
-            </svg>
+            </svg> */}
+           <Image
+          src={MyRehabLogo}
+          alt="MyRehab"
+          className="object-contain"
+          priority
+          />
           </div>
           <div>
             <div className="font-serif text-[18px] leading-none text-[var(--text)]">MyRehab</div>
