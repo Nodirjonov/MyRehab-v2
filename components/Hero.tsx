@@ -16,9 +16,28 @@ export default function Hero() {
     { size: 60,  top: '62%', left: '52%',  cls: 'bubble-c bubble-wave-3', opacity: 0.35 },
   ];
 
+  /* ────────────────────────────────────────────────────────────────
+     STRUCTURAL LAYOUT (top → bottom, no vertical centering):
+
+     ┌─ <section>  min-h: 100svh, flex-col, justify-START ───────┐
+     │  ┌─ safe-zone spacer ──────────────────────────────────┐  │
+     │  │  height = safe-area + in-app-browser chrome + nav   │  │
+     │  │  (env(safe-area-inset-top) + --inapp-top + 72px)    │  │
+     │  └─────────────────────────────────────────────────────┘  │
+     │  ┌─ hero content wrapper ──────────────────────────────┐  │
+     │  │  h1, subtitle, cards, CTAs, stats                   │  │
+     │  └─────────────────────────────────────────────────────┘  │
+     └───────────────────────────────────────────────────────────┘
+
+     The spacer is a real block element in normal flow.
+     It structurally guarantees that NO content can ever appear
+     above the safe line, regardless of browser, WebView, or
+     flex behavior.
+     ──────────────────────────────────────────────────────────── */
+
   return (
-    <section className="relative min-h-[100svh] grid-dots flex flex-col justify-center overflow-hidden"
-      style={{ paddingTop: 'calc(var(--safe-top, 0px) + var(--tg-toolbar, 0px) + 64px)' }}>
+    <section className="relative min-h-[100svh] grid-dots flex flex-col overflow-hidden">
+      {/* ── Decorative bubbles (absolute, pointer-events-none) ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {bubbles.map((b, i) => (
           <div key={i} className={`bubble ${b.cls}`}
@@ -33,9 +52,20 @@ export default function Hero() {
           style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, var(--bg) 100%)' }} />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-5 md:px-10 py-16 md:py-24">
+      {/* ── SAFE ZONE SPACER ──
+           This is a real block element that pushes all content below:
+           • iOS status bar / notch  (env safe-area-inset-top)
+           • Telegram / in-app browser toolbar (--inapp-top)
+           • Fixed navbar height (72px, slightly more than 62px nav for breathing room)
+           On desktop / Android without notch these resolve to 0px, leaving only 72px. */}
+      <div
+        className="relative z-10 shrink-0"
+        style={{ height: 'calc(env(safe-area-inset-top, 0px) + var(--inapp-top, 0px) + 72px)' }}
+        aria-hidden="true"
+      />
 
-    
+      {/* ── HERO CONTENT (normal flow, starts after spacer) ── */}
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-5 md:px-10 py-8 md:py-16">
 
         <h1 className="anim-2 font-serif font-normal leading-[1.05] mb-7 text-[var(--text)]"
           style={{ fontSize: 'clamp(42px, 7.5vw, 90px)' }}>

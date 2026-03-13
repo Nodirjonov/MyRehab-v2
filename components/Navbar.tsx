@@ -18,13 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
-  // Detect Telegram in-app browser and expose extra toolbar offset
-  useEffect(() => {
-    if (typeof navigator !== 'undefined' && /Telegram/i.test(navigator.userAgent)) {
-      document.documentElement.style.setProperty('--tg-toolbar', '36px');
-    }
-  }, []);
-
   const links = [
     { key: 'nav_link_how', href: '#pipeline' },
     { key: 'nav_link_spec', href: '#specialties' },
@@ -32,13 +25,23 @@ export default function Navbar() {
     { key: 'nav_link_price', href: '#pricing' },
   ];
 
+  /* ─────────────────────────────────────────────────────────────
+     Navbar height = 62px.
+     The nav sits below the safe-area-inset AND below a generous
+     in-app-browser chrome buffer (--inapp-top, default 0px).
+     On Telegram iOS the buffer is set to 32px by a <script> in
+     layout.tsx that runs BEFORE first paint (no layout shift).
+     ───────────────────────────────────────────────────────────── */
+  const navTop = 'calc(env(safe-area-inset-top, 0px) + var(--inapp-top, 0px))';
+  const dropdownTop = 'calc(env(safe-area-inset-top, 0px) + var(--inapp-top, 0px) + 62px)';
+
   return (
     <>
       <nav className={`fixed inset-x-0 z-50 h-[62px] flex items-center px-5 md:px-10 transition-all duration-300
         ${scrolled
           ? 'bg-[var(--bg)]/90 backdrop-blur-xl border-b border-[var(--border)]'
           : 'bg-transparent'}`}
-        style={{ top: 'calc(var(--safe-top, 0px) + var(--tg-toolbar, 0px))' }}>
+        style={{ top: navTop }}>
 
         <a href="#" className="flex items-center gap-3 no-underline group">
           <div className="w-12 h-12 rounded-[10px]  flex items-center justify-center shadow-[0_2px_12px_rgba(26,95,212,0.35)] group-hover:scale-105 transition-transform overflow-hidden">
@@ -105,7 +108,7 @@ export default function Navbar() {
 
       {open && (
         <div className="fixed inset-x-0 z-40 bg-[var(--bg-card)] border-b border-[var(--border)] md:hidden shadow-xl"
-          style={{ top: 'calc(var(--safe-top, 0px) + var(--tg-toolbar, 0px) + 62px)' }}>
+          style={{ top: dropdownTop }}>
           <div className="p-4 flex flex-col gap-1">
             {links.map(({ key, href }) => (
               <a key={href} href={href} onClick={() => setOpen(false)}
